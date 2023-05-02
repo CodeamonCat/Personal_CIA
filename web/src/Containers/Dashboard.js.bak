@@ -1,0 +1,161 @@
+import { Button, ButtonGroup } from "@mui/material";
+import CloseIcon from '@mui/icons-material/Close';
+import DeleteIcon from '@mui/icons-material/Delete';
+import IconButton from '@mui/material/IconButton';
+import Box from '@mui/material/Box';
+import Checkbox from '@mui/material/Checkbox';
+import Modal from '@mui/material/Modal';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import {Routes, Route, useNavigate} from 'react-router-dom';
+
+import "./Dashboard.css";
+
+const missions = [
+  {
+    name: "Please research the current state of the Bitcoin market and identify any...",
+    status: "Completed",
+    createdAt: "4/29/2023"
+  },
+  {
+    name: "Please research the current state of the Bitcoin market and identify any...",
+    status: "Completed",
+    createdAt: "4/29/2023"
+  },
+  {
+    name: "Please research the current state of the Bitcoin market and identify any...",
+    status: "Failed",
+    createdAt: "4/29/2023"
+  },
+  {
+    name: "Please research the current state of the Bitcoin market and identify any...",
+    status: "Completed",
+    createdAt: "4/29/2023"
+  },
+  {
+    name: "Please research the current state of the Bitcoin market and identify any...",
+    status: "Completed",
+    createdAt: "4/29/2023"
+  },
+  {
+    name: "Please research the current state of the Bitcoin market and identify any...",
+    status: "Completed",
+    createdAt: "4/29/2023"
+  },
+  {
+    name: "Please research the current state of the Bitcoin market and identify any...",
+    status: "Completed",
+    createdAt: "4/29/2023"
+  },
+  {
+    name: "Please research the current state of the Bitcoin market and identify any...",
+    status: "Completed",
+    createdAt: "4/29/2023"
+  },
+  {
+    name: "Please research the current state of the Bitcoin market and identify any...",
+    status: "Completed",
+    createdAt: "4/29/2023"
+  },
+]
+
+const Dashboard = () => {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  const navigate = useNavigate();
+  const newSession = () => {
+    // 👇️ navigate to /contacts
+    navigate('/session');
+  };
+
+  return (
+    <div className="multi-select">
+      <div className="nav">
+        <h1 className="personal-cia">Personal CIA</h1>
+        <Button
+          variant="contained"
+          color="success"
+          style={{ textTransform: 'none' }}
+          component={Link} to=".././Session"
+        >
+          Add new session
+        </Button>
+      </div>
+
+      <div className="nav">
+        <ButtonGroup color="primary" variant="outlined" aria-label="outlined button group">
+          <Button variant="contained" style={{ textTransform: 'none' }}>All</Button>
+          <Button style={{ textTransform: 'none' }}>Completed</Button>
+          <Button style={{ textTransform: 'none' }}>Searching</Button>
+          <Button style={{ textTransform: 'none' }}>Failed</Button>
+        </ButtonGroup>
+
+        <Button
+          variant="contained"
+          color="info"
+          style={{ textTransform: 'none' }}
+        >
+          Summarize
+        </Button>
+      </div>
+
+      <table className="mission-table">
+        <thead>
+          <tr>
+            <th><Checkbox color="default" /></th>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Created Date</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {missions.map((mission, idx) => {
+            return (
+              <tr key={idx}>
+                <td><Checkbox color="default" /></td>
+                <td>{mission.name}</td>
+                <td style={
+                  { color: mission.status === "Completed" ? "green" : mission.status === "Failed" ? "red" : "" }
+                }>
+                  {mission.status}
+                </td>
+                <td>{mission.createdAt}</td>
+                <td><DeleteIcon /></td>
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
+
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: 400,
+          bgcolor: 'white',
+          boxShadow: 24,
+          p: 4,
+        }}>
+          <div className="nav">
+            <h2>New Session</h2>
+            <IconButton onClick={handleClose}>
+              <CloseIcon />
+            </IconButton>
+          </div>
+        </Box>
+      </Modal>
+    </div>
+  );
+};
+
+export default Dashboard;

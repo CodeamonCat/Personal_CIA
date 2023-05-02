@@ -1,0 +1,74 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+header, footer {
+    background-color: black;
+    text-align: center;
+    padding: 1em;
+}
+section {
+    background-color: #f1f1f1;
+    padding: 2em;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+label {
+    margin-bottom: 0.5em;
+}
+input[type="text"], textarea, select {
+    width: 100%;
+    margin-bottom: 1em;
+}
+.row {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+}
+.column {
+    flex: 1;
+    padding: 0 1em;
+}
+.redAsterisk {
+    color: red;
+}
+.subHeader {
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+}
+.numberOfAttemptsRow {
+    display: flex;
+    align-items: center;
+}
+.numberOfAttemptsInput {
+    width: 50%;
+    margin-right: 0.5em;
+}
+.verticalLine {
+    border-left: 2px solid black;
+    height: 100px;
+    margin: 0 1em;
+}
+.checkboxGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5em;
+    margin-bottom: 1em;
+}
+.startSearchBtn {
+    background-color: #4CAF50;
+    color: white;
+    align-self: flex-end;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+}
