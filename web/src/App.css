@@ -1,0 +1,47 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+header {
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  padding: 1em;
+}
+nav {
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+}
+nav a {
+  color: #4CAF50;
+  text-decoration: none;
+  margin: 0 1em;
+}
+nav a:hover {
+  text-decoration: underline;
+}
+section {
+  background-color: #f1f1f1;
+  padding: 2em;
+}
+footer {
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  padding: 1em;
+  margin-top: 1em;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+label {
+  margin-bottom: 0.5em;
+}
+input[type="text"], textarea {
+  width: 100%;
+  margin-bottom: 1em;
+}

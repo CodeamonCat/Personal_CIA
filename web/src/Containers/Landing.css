@@ -1,0 +1,17 @@
+.app-name {
+  font-size: 4rem;
+  font-weight: 500;
+}
+
+.front-page {
+  position: relative;
+  padding: 4rem 8rem;
+  background-color: var(--color-white);
+  min-height: 100vh;
+  overflow: hidden;
+  text-align: center;
+  font-size: 2rem;
+  color: var(--color-black);
+  font-family: var(--font-inter);
+}
+  

@@ -1,0 +1,51 @@
+h1, h2, h3 {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.personal-cia {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.multi-select {
+  position: relative;
+  background-color: var(--color-white);
+  min-height: 100vh;
+  overflow: hidden;
+  padding: 2rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-black);
+  font-family: var(--font-inter);
+}
+
+.mission-table {
+  width: 100%;
+  table-layout: auto;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.mission-table thead {
+  background-color: #d4d4d4;
+}
+
+.mission-table th, .mission-table td {
+  padding: 0.4rem 0;
+}
+
+.new-mission-modal {
+  position: absolute;
+  width: 400px;
+  padding: 2rem;
+  background-color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%),
+}

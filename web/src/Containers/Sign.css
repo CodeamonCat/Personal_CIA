@@ -1,0 +1,65 @@
+.sign-up-child,
+.sign-up-inner,
+.sign-up-item {
+  border: 0;
+  background-color: transparent;
+  position: absolute;
+  top: 475px;
+  left: 296px;
+}
+.sign-up-inner,
+.sign-up-item {
+  top: 323px;
+}
+.sign-up-inner {
+  top: 627px;
+}
+.group-button {
+  position: absolute;
+  top: 756.3px;
+  left: 296px;
+}
+.api-key,
+.company-field,
+.company-name,
+.welcome-to-personal {
+  position: absolute;
+  top: 281px;
+  left: 296px;
+  display: flex;
+  align-items: center;
+  width: 510px;
+  height: 42px;
+}
+.company-field,
+.company-name,
+.welcome-to-personal {
+  top: 433px;
+}
+.company-field,
+.welcome-to-personal {
+  top: 585px;
+}
+.welcome-to-personal {
+  margin: 0;
+  top: 121px;
+  left: 322px;
+  font-size: 32px;
+  font-weight: 400;
+  font-family: inherit;
+  text-align: center;
+  justify-content: center;
+  width: 794px;
+  height: 160px;
+}
+.sign-up {
+  position: relative;
+  background-color: var(--color-white);
+  width: 100%;
+  height: 1024px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-xl);
+  color: var(--color-black);
+  font-family: var(--font-inter);
+}
