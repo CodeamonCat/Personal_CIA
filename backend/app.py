@@ -8,7 +8,7 @@ import openai
 
 # company_name=""
 # industry=""
-openai.api_key="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"
+openai.api_key=""
 agent_stack=[]
 agent_progress=[]
 agent_number=0
