@@ -43,8 +43,9 @@ const SearchForm = () => {
       
         try {
           // Send POST request to your Flask backend
-          const response = await fetch('http://localhost:5000/', {
+          const response = await fetch('http://localhost:5000/api/new_mission', {
             method: 'POST',
+            mode: 'cors',
             headers: {
               'Content-Type': 'application/json',
             },
@@ -56,7 +57,7 @@ const SearchForm = () => {
             const responseData = await response.json();
             console.log(responseData);
           } else {
-            console.error('Error submitting form:', response.statusText);
+            console.error('Response Error:', response.statusText);
           }
         } catch (error) {
           console.error('Error submitting form:', error);

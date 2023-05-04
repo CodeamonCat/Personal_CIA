@@ -7,7 +7,7 @@ npm start --prefix ./web/
 
 run web backend
 ```
-python ./backend/app.py
+sh flask_init.sh
 ```
 
 demo video

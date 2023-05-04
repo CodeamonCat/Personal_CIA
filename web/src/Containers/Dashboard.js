@@ -5,13 +5,14 @@ import IconButton from '@mui/material/IconButton';
 import Box from '@mui/material/Box';
 import Checkbox from '@mui/material/Checkbox';
 import Modal from '@mui/material/Modal';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import 'reactjs-popup/dist/index.css';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 
 import "./Dashboard.css";
 
-const missions = [
+const missions_instances = [
   {
     name: "trategyGen-GPT is an artificial intelligence designed to autonomously ca...",
     status: "Completed",
@@ -51,6 +52,7 @@ const missions = [
 
 const Dashboard = () => {
   const [open, setOpen] = useState(false);
+  const [missions, setMissions] = useState([]);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const navigate = useNavigate();
@@ -67,6 +69,16 @@ const Dashboard = () => {
     setText(data.text);
     alert(`File content: ${data.text}`);
   };
+
+  useEffect(() => {
+    const fetch_missions = async () => {
+      const response = await fetch('http://localhost:5000/api/missions');
+      const data = await response.json();
+      setMissions(data);
+    }
+    // Call the function
+    fetch_missions();
+ }, []);
 
   return (
     <div className="multi-select">
@@ -104,9 +116,9 @@ const Dashboard = () => {
         <thead>
           <tr>
             <th><Checkbox color="default" /></th>
-            <th>Name</th>
+            <th className="th_text">Name</th>
             <th>Status</th>
-            <th>Created Date</th>
+            <th className="th_date">Created Date</th>
             <th></th>
           </tr>
         </thead>
@@ -116,9 +128,9 @@ const Dashboard = () => {
             return (
               <tr key={idx}>
                 <td><Checkbox color="default" /></td>
-                <td>{mission.name}</td>
+                <td className="td-text">{mission.name}</td>
                 <td style={
-                  { color: mission.status === "Completed" ? "green" : mission.status === "Failed" ? "red" : "" }
+                  { color: mission.status === "Completed" ? "green" : mission.status === "Processing" ? "gray" : "" }
                 }>
                   {mission.status}
                 </td>
