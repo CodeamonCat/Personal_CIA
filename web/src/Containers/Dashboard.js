@@ -63,11 +63,47 @@ const Dashboard = () => {
 
   const [text, setText] = useState('');
 
-  const getText = async () => {
-    const response = await fetch('http://localhost:5000/get_text');
-    const data = await response.json();
-    setText(data.text);
-    alert(`File content: ${data.text}`);
+  const onItemCheck = (e, item) => {
+    let tempList = missions;
+    tempList.map((mission) => {
+      if (mission.id === item.id) {
+        mission.selected = e.target.checked;
+      }
+      return mission;
+    })
+    setMissions(tempList);
+  };
+
+  const getSelectedRows = async(event) => {
+    // Prepare form data
+    const selected_id = missions.filter((e) => e.selected).map(items => items['id']);
+    const postData = { indices: selected_id };
+    console.log(selected_id);
+    console.log(postData);
+  
+    try {
+      // Send POST request to your Flask backend
+      const response = await fetch('http://localhost:5000/api/summary', {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(postData),
+      });
+  
+      // Handle the response from the server
+      if (response.ok) {
+        const responseData = await response.json();
+        console.log(responseData['summary']);
+        var resp = window.prompt(responseData['summary'])
+      } else {
+        console.error('Response Error:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
+    
   };
 
   useEffect(() => {
@@ -106,9 +142,10 @@ const Dashboard = () => {
           variant="contained"
           color="info"
           style={{ textTransform: 'none' }}
-          component={Link} to="http://localhost:5000/get_text"
+          // component={Link} to="http://localhost:5000/get_text"
+          onClick={async() => getSelectedRows()}
         >
-          Summarize
+          Summarize {missions.filter((e) => e.selected).length}
         </Button>
       </div>
 
@@ -124,13 +161,18 @@ const Dashboard = () => {
         </thead>
 
         <tbody>
-          {missions.map((mission, idx) => {
+          {missions.map(mission => {
             return (
-              <tr key={idx}>
-                <td><Checkbox color="default" /></td>
+              <tr key={mission.id}>
+                <td><Checkbox color="default" 
+                  onChange={(e) => onItemCheck(e, mission)}
+                /></td>
                 <td className="td-text">{mission.name}</td>
                 <td style={
-                  { color: mission.status === "Completed" ? "green" : mission.status === "Processing" ? "gray" : "" }
+                  { color: mission.status === "Completed" ? "green" : 
+                  mission.status === "Processing" ? "gray" :  
+                  mission.status === "Failed" ? "red" : ""
+                }
                 }>
                   {mission.status}
                 </td>
