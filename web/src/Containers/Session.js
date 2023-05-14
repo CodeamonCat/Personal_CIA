@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import "./Session.css";
 
+
 const SearchForm = () => {
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
@@ -15,6 +16,7 @@ const SearchForm = () => {
     const [incomeGroup, setIncomeGroup] = useState("");
     const [fieldIndustry, setFieldIndustry] = useState("");
     const [researchType, setResearchType] = useState([]);
+    const [showSuccess, setShowSuccess] = useState(false);
 
     const handleCheckboxChange = (event, setter) => {
         if (event.target.checked) {
@@ -56,6 +58,7 @@ const SearchForm = () => {
           if (response.ok) {
             const responseData = await response.json();
             console.log(responseData);
+            setShowSuccess(true)
           } else {
             console.error('Response Error:', response.statusText);
           }
@@ -178,6 +181,9 @@ const SearchForm = () => {
             </div>
 
             <button type="submit" className="start-search-btn">Start Search</button>
+            <div id="show_success" style={{display: showSuccess? 'block': 'none'}}>
+                <p>success</p>
+            </div>
             <div className="nav">
                 <Button
                     variant="contained"
