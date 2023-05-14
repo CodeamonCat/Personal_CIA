@@ -11,9 +11,10 @@ import openai
 ### config ###################################
 debug_mode = False
 AUTO_GPT_PATH = '/home/bacon/Auto-GPT'
+OPENAI_APIKEY_PATH = './backend/openai.api_key'
 ##############################################
 
-with open("backend/openai.api_key","r") as f:
+with open(OPENAI_APIKEY_PATH,"r") as f:
     api_key = f.read()
     openai.api_key=api_key
 agent_dates=[datetime.datetime.now().strftime("%Y-%m-%d-%H:%M:%S")]
